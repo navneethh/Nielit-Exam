@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1095" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/fragment_disscuss.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/fragment_homefragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/fragment_profilefragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/menu/bot_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
