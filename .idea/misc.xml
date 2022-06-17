@@ -7,6 +7,9 @@
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/border.xml" value="0.117" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/but_back.xml" value="0.117" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/cheak.xml" value="0.117" />
+        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/courseback.xml" value="0.117" />
+        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/coursedetailback.xml" value="0.117" />
+        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/difficulty.xml" value="0.117" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1095" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.117" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/drawable/ic_baseline_question_answer_24.xml" value="0.117" />
@@ -15,7 +18,7 @@
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/activity_signup.xml" value="0.15469613259668508" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/fragment_disscuss.xml" value="0.19010416666666666" />
-        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/fragment_homefragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/fragment_homefragment.xml" value="0.25" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/layout/fragment_profilefragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/navneet/AndroidStudioProjects/nielit/app/src/main/res/menu/bot_menu.xml" value="0.20416666666666666" />
       </map>

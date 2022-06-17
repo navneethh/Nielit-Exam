@@ -10,4 +10,6 @@
     <color name="login">#E4F3EA</color>
 
     <color name="logindark">#6CCC92</color>
+    <color name="headline1">#000000</color>
+    <color name="colordetailback">#BEBEBE</color> />
 </resources>
