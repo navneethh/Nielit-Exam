@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".olevel">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+
+        <TextView
+            android:id="@+id/textView10"
+           android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Olevel is organised by Nielit 2 times in a year. Candates have to pass 4 papers and 1 practical.
+They can appear for as many papers interested at any exam cycle ehich is held 2 times in a years i.e. July and January. "
+        />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eligibilty "
+            android:layout_marginTop="16dp"
+            style="@style/headlineee"
+            />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="1.  10+2 / any diploma (Govt. Recognized) of a minimum of 1 Year duration after 10th class /ITI Certificate (one year) after class 10, followed in each case by one year relevant experience.
+\n\n \t \tor\n\n2.  Any graduate from recognized University/Institute is eligible to register at 'O' level without any experience"
+          />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Important Dates"
+            style="@style/headlineee"
+            android:layout_marginTop="16dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/border">
+            <TextView
+                style="@style/impdates"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Application Starts"/>
+            <TextView
+                android:layout_width="0dp"
+                style="@style/impdates"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=":25 july"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/border">
+            <TextView
+                style="@style/impdates"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Last Date to Apply Online"/>
+            <TextView
+                android:layout_width="0dp"
+                style="@style/impdates"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=":25 july"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:minHeight="48dp"
+            android:layout_gravity="center"
+            android:background="@drawable/border">
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+               style="@style/impdates"
+
+                android:layout_weight="1"
+                android:text="Exam Date "/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/impdates"
+                android:layout_weight="1"
+                android:text=":to be announced soon"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/oleveltopli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/headline1"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="Olevel by Nielit" />
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Olevel is the Exam conducted by NIELIT which is used for Basic knowledge of Computer Opertaions.\n Skill include development using HTML, CSS, Programming using C, basic IT tools knowledge"   />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/oleveltopli">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/courseprop"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Syllabus"
+                    />
+
+                <TextView
+                    style="@style/courseprop"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Notes" />
+
+                <TextView
+                    style="@style/courseprop"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Questions" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/courseprop"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Exam Date" />
+
+                <TextView
+                    style="@style/courseprop"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Apply Online" />
+
+                <TextView
+                    style="@style/courseprop"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Result" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

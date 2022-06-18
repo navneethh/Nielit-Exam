@@ -10,9 +10,28 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>\
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
 
         <!-- Customize your theme here. -->
+    </style>
+    <style name="courseprop">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@drawable/but_back</item>
+
+    </style>
+
+    <style name="headlineee">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/headline1</item>
+    </style>
+    <style name="impdates">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">5dp</item>
     </style>
 </resources>
