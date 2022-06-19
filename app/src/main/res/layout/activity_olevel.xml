@@ -62,8 +62,7 @@ They can appear for as many papers interested at any exam cycle ehich is held 2 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/border">
+            android:layout_marginTop="16dp">
             <TextView
                 style="@style/impdates"
                 android:layout_width="0dp"
@@ -77,13 +76,19 @@ They can appear for as many papers interested at any exam cycle ehich is held 2 
                 android:layout_weight="1"
                 android:text=":25 july"/>
 
+
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/coursedetailback"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/border">
+            android:layout_marginTop="16dp">
             <TextView
                 style="@style/impdates"
                 android:layout_width="0dp"
@@ -101,11 +106,15 @@ They can appear for as many papers interested at any exam cycle ehich is held 2 
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/coursedetailback"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:minHeight="48dp"
-            android:layout_gravity="center"
-            android:background="@drawable/border">
+            android:layout_gravity="center">
             <TextView
 
                 android:layout_width="0dp"
@@ -122,6 +131,11 @@ They can appear for as many papers interested at any exam cycle ehich is held 2 
                 android:text=":to be announced soon"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/coursedetailback"/>
 
 
 
