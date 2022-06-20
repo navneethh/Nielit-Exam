@@ -22,7 +22,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:text="Nielit Courses"
-            android:textColor="@color/headline1"
+style="@style/headlineee"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +63,7 @@
             android:layout_marginEnd="24dp"
             android:text="The Fundamentals"
 
-            android:textColor="@color/headline1"
+            style="@style/headlineee"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -90,6 +90,7 @@
                 android:src="@drawable/course_head1" />
 
             <LinearLayout
+                android:id="@+id/olevelbut"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -102,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="O-level computer course"
-                    android:textColor="@color/headline1"
+                  style="@style/headlineee"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -206,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="A-level computer course"
-                    android:textColor="@color/headline1"
+                    style="@style/headlineee"
                     android:textSize="16sp" />
 
                 <LinearLayout

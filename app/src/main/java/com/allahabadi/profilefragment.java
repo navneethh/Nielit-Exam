@@ -1,12 +1,24 @@
 package com.allahabadi;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +31,9 @@ public class profilefragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    FirebaseDatabase database;
+    DatabaseReference myref;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +74,52 @@ public class profilefragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_profilefragment, container, false);
+
+
+        TextView name= rootview.findViewById(R.id.nameprof);
+        TextView email= rootview.findViewById(R.id.emailprof);
+
+
+        FirebaseAuth mAuth= FirebaseAuth.getInstance();
+        String userid= mAuth.getUid().toString();
+
+
+        database= FirebaseDatabase.getInstance();
+        myref=database.getReference("profile").child(userid);
+
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                String temp= "";
+                temp=(String) dataSnapshot.child("name").getValue();
+
+
+            if(temp==null){
+                Toast.makeText(getContext(),"Data is null",Toast.LENGTH_LONG).show();
+            }else {
+
+
+                name.setText((String) dataSnapshot.child("name").getValue());
+                email.setText(dataSnapshot.child("email").getValue().toString());  // ..
+            }   }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        myref.addValueEventListener(postListener);
+
+
+
+
+
+
+
+
         // Inflate the layout for this fragment
         return rootview;
     }

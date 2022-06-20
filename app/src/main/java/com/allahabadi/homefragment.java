@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 /**
@@ -67,7 +68,18 @@ public class homefragment extends Fragment {
 
         View rootview = inflater.inflate(R.layout.fragment_homefragment, container, false);
         ImageView button= rootview.findViewById(R.id.imageView);
+        LinearLayout olevel= rootview.findViewById(R.id.olevelbut);
+
         button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(getContext(),"Button-clicked!",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(),signup.class);
+                startActivity(i);
+            }
+        });
+
+        olevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                Toast.makeText(getContext(),"Button-clicked!",Toast.LENGTH_SHORT).show();
@@ -75,6 +87,9 @@ public class homefragment extends Fragment {
                 startActivity(i);
             }
         });
+
+
+
         return rootview;
     }
 }
