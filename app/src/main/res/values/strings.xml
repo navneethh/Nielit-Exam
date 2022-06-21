@@ -2,4 +2,16 @@
     <string name="app_name">nielit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="coursearray">
+
+        <item>O-level</item>
+        <item>A-level</item>
+        <item>B-level</item>
+
+    </string-array>
+
+
+
+
 </resources>

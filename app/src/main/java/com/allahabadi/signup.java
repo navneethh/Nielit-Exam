@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class signup extends AppCompatActivity {
     FirebaseAuth mAuth;
-    String email,password,name;
+    String email,password,name,cour;
     TextView emaill,pass,namet;
     FirebaseDatabase database; DatabaseReference myRef;
     String usid;
@@ -60,6 +62,29 @@ public class signup extends AppCompatActivity {
 // ...
 // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                              @Override
+                                              public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+
+                                                 cour= adapterView.getItemAtPosition(pos).toString();
+                                                  Log.e(TAG, "value of course"+cour);
+
+                                              }
+
+                                              @Override
+                                              public void onNothingSelected(AdapterView<?> adapterView) {
+                                                  String Course= "Olevel";
+
+                                              }
+                                          }
+        );
+
+
+
+
         sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,11 +121,16 @@ public class signup extends AppCompatActivity {
                      if (task.isSuccessful()) {
                          // Sign in success, update UI with the signed-in user's information
                          Log.d(TAG, "signInWithEmail:success");
-                         Toast.makeText(signup.this, "Authent done.",Toast.LENGTH_SHORT).show();
-                         User userr= new User(email,name,"O-level");
+                         Toast.makeText(signup.this, "Signup complete",Toast.LENGTH_SHORT).show();
+                         User userr= new User(name,email,cour);
 
 //                         name = task.getResult().getUser().toString();
-                         myRef.child(mAuth.getUid().toString()).setValue(userr);
+                         myRef.child(mAuth.getUid().toString()).setValue(userr).addOnCompleteListener(new OnCompleteListener<Void>() {
+                             @Override
+                             public void onComplete(@NonNull Task<Void> task) {
+                                 finish();
+                             }
+                         });
 
 
 
@@ -115,4 +145,22 @@ public class signup extends AppCompatActivity {
                  }
              });
  }
+
+
+
+    class SpinnerActvity extends Activity  implements AdapterView.OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view,
+                                   int pos, long id) {
+            // An item was selected. You can retrieve the selected item using
+            // parent.getItemAtPosition(pos)
+        }
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            // Another interface callback
+        }
+    }
+
+
+
 }

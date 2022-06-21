@@ -41,18 +41,33 @@ style="@style/headlineee"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:src="@drawable/bannerh"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            />
+     <LinearLayout
+         android:id="@+id/imageView"
+
+         android:layout_width="0dp"
+         android:layout_height="250dp"
+
+         android:layout_marginStart="24dp"
+         android:layout_marginTop="24dp"
+         android:layout_marginEnd="24dp"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/textView4"
+         >
+
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@drawable/circleback"
+             android:clipToOutline="true"
+             android:scaleType="centerCrop"
+
+             android:src="@drawable/bannerh" />
+
+     </LinearLayout>
+
+
+
 
         <TextView
             android:id="@+id/textView5"
@@ -87,6 +102,10 @@ style="@style/headlineee"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
+                android:background="@drawable/circleback"
+                android:clipToOutline="true"
+
+                android:scaleType="center"
                 android:src="@drawable/course_head1" />
 
             <LinearLayout
@@ -180,6 +199,7 @@ style="@style/headlineee"
 
 
         <LinearLayout
+            android:id="@+id/secview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -193,6 +213,10 @@ style="@style/headlineee"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
+                android:background="@drawable/circleback"
+
+                android:clipToOutline="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/alevwl" />
 
             <LinearLayout
@@ -203,11 +227,11 @@ style="@style/headlineee"
                 android:padding="5dp">
 
                 <TextView
+                    style="@style/headlineee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="A-level computer course"
-                    style="@style/headlineee"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -270,10 +294,10 @@ style="@style/headlineee"
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".85"
-                android:gravity="center"
                 android:layout_marginTop="5dp"
+                android:layout_weight=".85"
                 android:background="@drawable/difficulty"
+                android:gravity="center"
                 android:padding="3dp"
                 android:text="Hard"
                 android:textColor="@color/white" />

@@ -11,5 +11,8 @@
 
     <color name="logindark">#6CCC92</color>
     <color name="headline1">#000000</color>
-    <color name="colordetailback">#BEBEBE</color> />
+    <color name="colordetailback">#BEBEBE</color>
+    <color name="questionbackc">#E1E1E1</color>
+    <color name="ques_back_lay">#FFFFFF</color>
+    />
 </resources>

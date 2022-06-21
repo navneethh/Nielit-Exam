@@ -2,6 +2,7 @@ package com.allahabadi;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,7 +80,9 @@ public class profilefragment extends Fragment {
 
         TextView name= rootview.findViewById(R.id.nameprof);
         TextView email= rootview.findViewById(R.id.emailprof);
-
+        TextView courses= rootview.findViewById(R.id.coursetxt);
+        TextView phone= rootview.findViewById(R.id.phonetxt);
+        TextView dob= rootview.findViewById(R.id.dobtxt);
 
         FirebaseAuth mAuth= FirebaseAuth.getInstance();
         String userid= mAuth.getUid().toString();
@@ -102,7 +106,14 @@ public class profilefragment extends Fragment {
 
 
                 name.setText((String) dataSnapshot.child("name").getValue());
-                email.setText(dataSnapshot.child("email").getValue().toString());  // ..
+                email.setText(dataSnapshot.child("email").getValue().toString());
+                courses.setText((String) dataSnapshot.child("course").getValue());
+                phone.setText((String) dataSnapshot.child("phone").getValue());
+                dob.setText((String) dataSnapshot.child("course").getValue());
+
+
+
+                // ..
             }   }
 
             @Override

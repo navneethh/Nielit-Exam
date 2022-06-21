@@ -67,8 +67,8 @@ public class homefragment extends Fragment {
         // Inflate the layout for this fragment
 
         View rootview = inflater.inflate(R.layout.fragment_homefragment, container, false);
-        ImageView button= rootview.findViewById(R.id.imageView);
-        LinearLayout olevel= rootview.findViewById(R.id.olevelbut);
+        LinearLayout button= rootview.findViewById(R.id.imageView);
+        LinearLayout olevel= rootview.findViewById(R.id.topvi);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
