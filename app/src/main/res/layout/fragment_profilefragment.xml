@@ -44,6 +44,7 @@
                         android:orientation="horizontal"
                         android:background="@drawable/coursedetailback" />
                     <LinearLayout
+                        android:id="@+id/doblayout"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginTop="16dp"
@@ -119,6 +120,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/phonelayout"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:orientation="horizontal">
@@ -166,6 +168,7 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
+                            android:layout_margin="5dp"
                             android:src="@drawable/ic_outline_edit_24" />
 
                         <TextView
@@ -188,8 +191,9 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-                            app:srcCompat="@drawable/ic_round_arrow_forward_ios_24" />
+                            android:layout_margin="5dp"
+                            android:src="@drawable/ic_round_arrow_forward_ios_24"
+                            />
 
                         <TextView
                             style="@style/headlineee"

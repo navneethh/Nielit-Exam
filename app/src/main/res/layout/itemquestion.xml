@@ -27,13 +27,16 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/quest_txtview"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="4"
                 android:text="This is the sample question in how many days cna we finish the Alevel course fastest. if we have to complete in shortest time?"
-                android:textColor="@color/headline1"
-                android:textSize="16sp" />
+                android:textColor="@color/logindark"
+                android:maxHeight="150dp"
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -51,7 +54,7 @@
                     app:srcCompat="@drawable/ic_baseline_person_24" />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/name_txtview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
@@ -64,7 +67,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/coursedetailback" />
@@ -85,8 +88,8 @@
                     android:id="@+id/imageView6"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/ic_baseline_question_answer_24" />
+                    android:layout_margin="3dp"
+                    app:srcCompat="@drawable/ic_outline_question_answer_24" />
 
                 <TextView
                     android:id="@+id/textView17"
@@ -107,7 +110,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="3dp"
                     app:srcCompat="@drawable/ic_outline_thumb_up_24" />
 
                 <TextView

@@ -1,12 +1,31 @@
 package com.allahabadi;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,11 +38,13 @@ public class DisscussFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    quesAdapter adapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
+    ArrayList<Question> userlist;
     public DisscussFragment() {
         // Required empty public constructor
     }
@@ -58,7 +79,71 @@ public class DisscussFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootview = inflater.inflate(R.layout.fragment_disscuss, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_disscuss, container, false);
+
+        RecyclerView recyclerView= rootview.findViewById(R.id.recyclerView);
+        FloatingActionButton fab= rootview.findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),addquestActivity.class);
+                startActivity(i);
+            }
+        });
+        userlist = new ArrayList<Question>();
+
+
+
+
+         adapter = new quesAdapter(userlist);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+
+        setuserlist( );
+        return rootview;
+    }
+
+    private void setuserlist() {
+       DatabaseReference dr=  FirebaseDatabase.getInstance().getReference("posts");
+       dr.addChildEventListener(new ChildEventListener() {
+           @Override
+           public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+               String post = (String) snapshot.child("post").getValue();
+
+               String name = (String) snapshot.child("uid").getValue();
+               Long time = (Long) snapshot.child("time").getValue();
+
+               userlist.add(new Question(name,post,time));
+               adapter.notifyDataSetChanged();
+
+           }
+
+           @Override
+           public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+           }
+
+           @Override
+           public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+           }
+
+           @Override
+           public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+           }
+
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
+
+           }
+
+       });
+
+
     }
 }

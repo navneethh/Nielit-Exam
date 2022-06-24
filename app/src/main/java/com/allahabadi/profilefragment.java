@@ -3,24 +3,35 @@ package com.allahabadi;
 import static android.content.ContentValues.TAG;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +46,12 @@ public class profilefragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     FirebaseDatabase database;
+    FirebaseAuth mAuth;
+    String userid;
     DatabaseReference myref;
+    TextView name,email,dob,courses,phone;
+    ImageView profileimage;
+    LinearLayout phonelayout,doblayot;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -63,13 +79,24 @@ public class profilefragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        mAuth= FirebaseAuth.getInstance();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(currentUser != null){
+            Log.e(TAG, "signed In");
+            userid= currentUser.getUid();
+
+
+        }
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -78,17 +105,42 @@ public class profilefragment extends Fragment {
         View rootview = inflater.inflate(R.layout.fragment_profilefragment, container, false);
 
 
-        TextView name= rootview.findViewById(R.id.nameprof);
-        TextView email= rootview.findViewById(R.id.emailprof);
-        TextView courses= rootview.findViewById(R.id.coursetxt);
-        TextView phone= rootview.findViewById(R.id.phonetxt);
-        TextView dob= rootview.findViewById(R.id.dobtxt);
+         name= rootview.findViewById(R.id.nameprof);
+         email= rootview.findViewById(R.id.emailprof);
+         courses= rootview.findViewById(R.id.coursetxt);
+         phone= rootview.findViewById(R.id.phonetxt);
+         dob= rootview.findViewById(R.id.dobtxt);
+         phonelayout = rootview.findViewById(R.id.phonelayout);
+        doblayot = rootview.findViewById(R.id.doblayout);
+        profileimage= rootview.findViewById(R.id.profileimageview);
 
-        FirebaseAuth mAuth= FirebaseAuth.getInstance();
-        String userid= mAuth.getUid().toString();
+        ImageView editi= rootview.findViewById(R.id.imageView4);
+//         mAuth= FirebaseAuth.getInstance();
+
+
 
 
         database= FirebaseDatabase.getInstance();
+
+
+       if(userid!=null)
+           loadprof();
+
+
+
+//seting new image
+        editi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectimage();
+            }
+        });
+
+        // Inflate the layout for this fragment
+        return rootview;
+    }
+    void loadprof(){
+        userid=FirebaseAuth.getInstance().getUid().toString();
         myref=database.getReference("profile").child(userid);
 
 
@@ -100,21 +152,23 @@ public class profilefragment extends Fragment {
                 temp=(String) dataSnapshot.child("name").getValue();
 
 
-            if(temp==null){
-                Toast.makeText(getContext(),"Data is null",Toast.LENGTH_LONG).show();
-            }else {
+                if(temp==null){
+                    Toast.makeText(getContext(),"Data is null",Toast.LENGTH_LONG).show();
+                }else {
 
 
-                name.setText((String) dataSnapshot.child("name").getValue());
-                email.setText(dataSnapshot.child("email").getValue().toString());
-                courses.setText((String) dataSnapshot.child("course").getValue());
-                phone.setText((String) dataSnapshot.child("phone").getValue());
-                dob.setText((String) dataSnapshot.child("course").getValue());
+                    name.setText((String) dataSnapshot.child("name").getValue());
+                    email.setText(dataSnapshot.child("email").getValue().toString());
+                    courses.setText((String) dataSnapshot.child("course").getValue());
+
+
+                    phone.setText((String) dataSnapshot.child("phone").getValue());
+                    dob.setText((String) dataSnapshot.child("dob").getValue());
 
 
 
-                // ..
-            }   }
+                    // ..
+                }   }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -122,16 +176,33 @@ public class profilefragment extends Fragment {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         };
+
         myref.addValueEventListener(postListener);
-
-
-
-
-
-
-
-
-        // Inflate the layout for this fragment
-        return rootview;
     }
+    void selectimage(){
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+
+        launchSomeActivity.launch(i);
+    }
+    ActivityResultLauncher<Intent> launchSomeActivity
+            = registerForActivityResult(
+            new ActivityResultContracts
+                    .StartActivityForResult(),
+            result -> {
+                if (result.getResultCode()
+                        == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+
+                    // do your operation from here....
+                    if (data != null
+                            && data.getData() != null) {
+                        Uri selectedImageUri = data.getData();
+                        Bitmap selectedImageBitmap;
+
+                      profileimage.setImageURI(selectedImageUri);
+                    }
+                }
+            });
 }
