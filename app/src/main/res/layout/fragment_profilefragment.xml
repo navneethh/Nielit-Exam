@@ -234,6 +234,17 @@ style="@style/headlineee"
                     android:background="@drawable/circleback"
                     android:clipToOutline="true"
                     app:srcCompat="@drawable/alevwl" />
+
+                <Button
+                    android:id="@+id/uploadbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/nameprof"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

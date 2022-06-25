@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -18,11 +19,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +35,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
@@ -52,6 +60,8 @@ public class profilefragment extends Fragment {
     TextView name,email,dob,courses,phone;
     ImageView profileimage;
     LinearLayout phonelayout,doblayot;
+    Button uploadbutton;
+    Uri selectedImageUri;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -113,6 +123,7 @@ public class profilefragment extends Fragment {
          phonelayout = rootview.findViewById(R.id.phonelayout);
         doblayot = rootview.findViewById(R.id.doblayout);
         profileimage= rootview.findViewById(R.id.profileimageview);
+        uploadbutton= rootview.findViewById(R.id.uploadbutton);
 
         ImageView editi= rootview.findViewById(R.id.imageView4);
 //         mAuth= FirebaseAuth.getInstance();
@@ -135,10 +146,41 @@ public class profilefragment extends Fragment {
                 selectimage();
             }
         });
+        uploadbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uploadpic();
+            }
+        });
 
         // Inflate the layout for this fragment
         return rootview;
     }
+
+    private void uploadpic() {
+        FirebaseStorage storage= FirebaseStorage.getInstance();
+       final Long temp= System.currentTimeMillis();
+        StorageReference storageRef = storage.getReference("profile").child(userid);
+        if(selectedImageUri==null)
+            Log.e("profile fragment","image uri is empty so can't upload");
+        else
+            storageRef.child("users").putFile(selectedImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    storageRef.child("users").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String downloadurl= uri.toString();
+                            Log.e("profile fragment","image uri is returned");
+
+                            DatabaseReference dr= database.getReference("profile").child(userid).child("pic");
+                            dr.setValue(downloadurl);
+                        }
+                    });
+                }
+            });
+    }
+
     void loadprof(){
         userid=FirebaseAuth.getInstance().getUid().toString();
         myref=database.getReference("profile").child(userid);
@@ -198,10 +240,11 @@ public class profilefragment extends Fragment {
                     // do your operation from here....
                     if (data != null
                             && data.getData() != null) {
-                        Uri selectedImageUri = data.getData();
+                         selectedImageUri = data.getData();
                         Bitmap selectedImageBitmap;
 
                       profileimage.setImageURI(selectedImageUri);
+                      uploadbutton.setVisibility(View.VISIBLE);
                     }
                 }
             });
