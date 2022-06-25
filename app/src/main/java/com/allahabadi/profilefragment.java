@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
@@ -62,6 +64,7 @@ public class profilefragment extends Fragment {
     LinearLayout phonelayout,doblayot;
     Button uploadbutton;
     Uri selectedImageUri;
+    ProgressBar progressBar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -124,18 +127,22 @@ public class profilefragment extends Fragment {
         doblayot = rootview.findViewById(R.id.doblayout);
         profileimage= rootview.findViewById(R.id.profileimageview);
         uploadbutton= rootview.findViewById(R.id.uploadbutton);
+        progressBar = rootview.findViewById(R.id.progressBar);
 
         ImageView editi= rootview.findViewById(R.id.imageView4);
 //         mAuth= FirebaseAuth.getInstance();
 
 
 
+        progressBar.setVisibility(View.INVISIBLE);
 
         database= FirebaseDatabase.getInstance();
 
 
-       if(userid!=null)
+       if(userid!=null) {
            loadprof();
+
+       }
 
 
 
@@ -149,12 +156,20 @@ public class profilefragment extends Fragment {
         uploadbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
+                uploadbutton.setVisibility(View.INVISIBLE);
                 uploadpic();
             }
         });
 
         // Inflate the layout for this fragment
         return rootview;
+    }
+
+    private void loadprofilepic(Uri uri) {
+
+        Picasso.with(getContext()).load(uri).into(profileimage);
+
     }
 
     private void uploadpic() {
@@ -170,47 +185,64 @@ public class profilefragment extends Fragment {
                     storageRef.child("users").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            String downloadurl= uri.toString();
-                            Log.e("profile fragment","image uri is returned");
 
-                            DatabaseReference dr= database.getReference("profile").child(userid).child("pic");
-                            dr.setValue(downloadurl);
+                            Log.e("profile fragment","image uri is returned");
+                            addiamgeuritoprofile(uri);
+
+
                         }
                     });
                 }
             });
     }
 
-    void loadprof(){
-        userid=FirebaseAuth.getInstance().getUid().toString();
-        myref=database.getReference("profile").child(userid);
+    private void addiamgeuritoprofile(Uri uri) {
+//        String url = String.valueOf(uri);
+        String url = uri.toString();
+        DatabaseReference dr = database.getReference("profile").child(userid).child("pic");
+        dr.setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                progressBar.setVisibility(View.GONE);
+                uploadbutton.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    void loadprof() {
+
+        userid = FirebaseAuth.getInstance().getUid().toString();
+        myref = database.getReference("profile").child(userid);
 
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
-                String temp= "";
-                temp=(String) dataSnapshot.child("name").getValue();
+                String temp = "";
+                temp = (String) dataSnapshot.child("name").getValue();
 
 
-                if(temp==null){
-                    Toast.makeText(getContext(),"Data is null",Toast.LENGTH_LONG).show();
-                }else {
+                if (temp == null) {
+                    Toast.makeText(getContext(), "Data is null", Toast.LENGTH_LONG).show();
+                } else {
 
 
                     name.setText((String) dataSnapshot.child("name").getValue());
                     email.setText(dataSnapshot.child("email").getValue().toString());
                     courses.setText((String) dataSnapshot.child("course").getValue());
+                    Uri pro = (Uri.parse((String) dataSnapshot.child("pic").getValue()));
 
 
                     phone.setText((String) dataSnapshot.child("phone").getValue());
                     dob.setText((String) dataSnapshot.child("dob").getValue());
 
-
+                    if (pro != null)
+                        loadprofilepic(pro);
 
                     // ..
-                }   }
+                }
+            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -220,6 +252,7 @@ public class profilefragment extends Fragment {
         };
 
         myref.addValueEventListener(postListener);
+
     }
     void selectimage(){
         Intent i = new Intent();
