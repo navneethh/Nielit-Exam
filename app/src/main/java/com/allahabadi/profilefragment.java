@@ -166,9 +166,9 @@ public class profilefragment extends Fragment {
         return rootview;
     }
 
-    private void loadprofilepic(Uri uri) {
+    private void loadprofilepic(String uri) {
 
-        Picasso.with(getContext()).load(uri).into(profileimage);
+        Picasso.with(profileimage.getContext()).load(uri).into(profileimage);
 
     }
 
@@ -231,7 +231,7 @@ public class profilefragment extends Fragment {
                     name.setText((String) dataSnapshot.child("name").getValue());
                     email.setText(dataSnapshot.child("email").getValue().toString());
                     courses.setText((String) dataSnapshot.child("course").getValue());
-                    Uri pro = (Uri.parse((String) dataSnapshot.child("pic").getValue()));
+                    String pro = (String) dataSnapshot.child("pic").getValue();
 
 
                     phone.setText((String) dataSnapshot.child("phone").getValue());

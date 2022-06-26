@@ -43,6 +43,7 @@ public class DisscussFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    DatabaseReference datar;
 
     ArrayList<Question> userlist;
     public DisscussFragment() {
@@ -95,6 +96,7 @@ public class DisscussFragment extends Fragment {
 
 
 
+        datar= FirebaseDatabase.getInstance().getReference();
 
          adapter = new quesAdapter(userlist);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -107,18 +109,37 @@ public class DisscussFragment extends Fragment {
     }
 
     private void setuserlist() {
-       DatabaseReference dr=  FirebaseDatabase.getInstance().getReference("posts");
+       DatabaseReference dr= datar.child("posts");
        dr.addChildEventListener(new ChildEventListener() {
            @Override
            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
+               final String[] imageuri = new String[1];
                String post = (String) snapshot.child("post").getValue();
 
-               String name = (String) snapshot.child("uid").getValue();
+               String uid = (String) snapshot.child("uid").getValue();
                Long time = (Long) snapshot.child("time").getValue();
 
-               userlist.add(new Question(name,post,time));
-               adapter.notifyDataSetChanged();
+//               reading uid details
+               datar.child("profile").child(uid).addValueEventListener(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String s = (String) snapshot.child("name").getValue();
+                       Log.e("Discuss adding name",s);
+                        String imageuri= (String) snapshot.child("pic").getValue();
+
+                       userlist.add(0,new Question(s,post,time,imageuri));
+                       adapter.notifyDataSetChanged();
+                   }
+
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError error) {
+
+                   }
+               });
+
+
+
 
            }
 
@@ -143,6 +164,7 @@ public class DisscussFragment extends Fragment {
            }
 
        });
+
 
 
     }
