@@ -114,31 +114,19 @@ public class DisscussFragment extends Fragment {
            @Override
            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-               final String[] imageuri = new String[1];
+               String s="",imageuri="";
                String post = (String) snapshot.child("post").getValue();
 
                String uid = (String) snapshot.child("uid").getValue();
                Long time = (Long) snapshot.child("time").getValue();
 
 //               reading uid details
-               datar.child("profile").child(uid).addValueEventListener(new ValueEventListener() {
-                   @Override
-                   public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String s = (String) snapshot.child("name").getValue();
-                       Log.e("Discuss adding name",s);
-                        String imageuri= (String) snapshot.child("pic").getValue();
-
-                       userlist.add(0,new Question(s,post,time,imageuri));
-                       adapter.notifyDataSetChanged();
-                   }
-
-                   @Override
-                   public void onCancelled(@NonNull DatabaseError error) {
-
-                   }
-               });
+               loaduiddetail(uid,post,time);
 
 
+
+               userlist.add(0,new Question(s,post,time,imageuri));
+               adapter.notifyDataSetChanged();
 
 
            }
@@ -165,7 +153,25 @@ public class DisscussFragment extends Fragment {
 
        });
 
+    }
 
+    private void loaduiddetail(String uid,String post, Long time) {
+       userlist.clear();
+       datar.child("profile").child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String s = (String) snapshot.child("name").getValue();
+                Log.e("Discuss frag adding name",s);
+                String imageuri= (String) snapshot.child("pic").getValue();
 
+                userlist.add(0,new Question(s,post,time,imageuri));
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

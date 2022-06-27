@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -67,8 +68,9 @@ public class homefragment extends Fragment {
         // Inflate the layout for this fragment
 
         View rootview = inflater.inflate(R.layout.fragment_homefragment, container, false);
-        LinearLayout button= rootview.findViewById(R.id.imageView);
+        ConstraintLayout button= rootview.findViewById(R.id.imageView);
         LinearLayout olevel= rootview.findViewById(R.id.topvi);
+        LinearLayout alevel= rootview.findViewById(R.id.aview);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +86,14 @@ public class homefragment extends Fragment {
             public void onClick(View view) {
 //                Toast.makeText(getContext(),"Button-clicked!",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getContext(),olevel.class);
+                startActivity(i);
+            }
+        });
+
+        alevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),Alevel.class);
                 startActivity(i);
             }
         });

@@ -42,7 +42,11 @@ public class quesAdapter extends RecyclerView.Adapter<quesAdapter.MyViewHolder>{
 
         holder.questionview.setText(quest);
         holder.nameview.setText(name);
-       if(imageuri!=null) Picasso.with(holder.authorimage.getContext()).load(imageuri).into(holder.authorimage);
+       if(imageuri!=null){
+           if(!imageuri.isEmpty()){
+               Picasso.with(holder.authorimage.getContext()).load(imageuri).into(holder.authorimage);
+           }
+       }
         holder.questlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

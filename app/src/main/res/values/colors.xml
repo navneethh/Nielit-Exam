@@ -17,6 +17,7 @@
 
     <color name="colo_arrow">#000000</color>
     <color name="questcolor">#39AE6F</color>
+    <color name="endgrad">#A302A3</color>
 
     />
 </resources>
