@@ -125,8 +125,7 @@ public class DisscussFragment extends Fragment {
 
 
 
-               userlist.add(0,new Question(s,post,time,imageuri));
-               adapter.notifyDataSetChanged();
+
 
 
            }

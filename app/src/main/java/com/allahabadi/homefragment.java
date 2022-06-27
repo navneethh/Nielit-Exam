@@ -13,7 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,15 +74,18 @@ public class homefragment extends Fragment {
         ConstraintLayout button= rootview.findViewById(R.id.imageView);
         LinearLayout olevel= rootview.findViewById(R.id.topvi);
         LinearLayout alevel= rootview.findViewById(R.id.aview);
+        TextView t= (TextView) rootview.findViewById(R.id.main_banner_text);
+        FirebaseAuth mAuth= FirebaseAuth.getInstance();
+        String uid = mAuth.getCurrentUser().getUid();
+        if (uid==null){
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(getContext(),"Button-clicked!",Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getContext(),signup.class);
-                startActivity(i);
-            }
-        });
+            t.setText("Click to Login");
+           openSignin(button);
+        }else{
+            t.setText("Latest Update");
+        }
+
+
 
         olevel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,5 +107,16 @@ public class homefragment extends Fragment {
 
 
         return rootview;
+    }
+
+    private void openSignin(ConstraintLayout button) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(getContext(),"Button-clicked!",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(),signup.class);
+                startActivity(i);
+            }
+        });
     }
 }

@@ -21,7 +21,7 @@ public class Alevel extends AppCompatActivity {
         TextView date_end= (TextView) findViewById(R.id.appli_date_end);
         TextView date_exam = (TextView) findViewById(R.id.exam_date);
 
-        course_heading.setText("A-level by Nielit");
+        course_heading.setText("Alevel by Nielit");
         course_short_des.setText("A-level is Adavnced diploma course by Nielit which is recognised by Central Government as equivalent to B Tech, BSc ,BCA. It is mainly 3 year course which is preferred to be completed in 2 years");
         course_des.setText("Student needs to clear 10 Theory papers along with 2 pratical exams with 2 Projects. O-level students have to only clear 6 papers and 1 practical and 1 Major project, as they are exempted from papers which they have cleared. For more info refer to full syllabus");
         course_eligibility.setText("Graduation is Basic requirement. \n10+2 students can apply if they have cleared O-level");

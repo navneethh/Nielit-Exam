@@ -39,8 +39,11 @@ public class quesAdapter extends RecyclerView.Adapter<quesAdapter.MyViewHolder>{
         String imageuri= userlist.get(position).getImageuri();
         String name= userlist.get(position).getUid();
         String date= userlist.get(position).getPost();
+        if( quest.length()>510) {
+            final String quest1 = quest.substring(0, 500);
 
-        holder.questionview.setText(quest);
+            holder.questionview.setText(quest1);
+        }else holder.questionview.setText(quest);
         holder.nameview.setText(name);
        if(imageuri!=null){
            if(!imageuri.isEmpty()){
