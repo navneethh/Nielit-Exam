@@ -9,5 +9,6 @@
     <color name="colo_arrow">#EAEAEA</color>
     <color name="questcolor">#09C960</color>
     <color name="questionbackc">#171717</color>
+    <color name="answer_back">#B4B1B1</color>
 
 </resources>

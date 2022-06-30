@@ -102,7 +102,6 @@ public class profilefragment extends Fragment {
             Log.e(TAG, "signed In");
             userid= currentUser.getUid();
 
-
         }
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {

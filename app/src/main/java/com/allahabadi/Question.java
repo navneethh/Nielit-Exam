@@ -1,7 +1,7 @@
 package com.allahabadi;
 
 public class Question {
-    String uid, post,imageuri;Long time;
+    String uid,name, post,imageuri;Long time;
 
     public String getUid() {
         return uid;
@@ -35,13 +35,24 @@ public class Question {
         this.imageuri = imageuri;
     }
 
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+//    constructor to upload question
     public Question(String uid, String post, Long time) {
         this.uid = uid;
         this.post = post;
         this.time = time;
     }
 
-    public Question(String uid, String post, Long time,String imageuri) {
+    public Question(String uid, String post, Long time, String imageuri, String name) {
+        this.name=name;
         this.uid = uid;
         this.post = post;
         this.time = time;

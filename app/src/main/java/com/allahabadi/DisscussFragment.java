@@ -109,8 +109,10 @@ public class DisscussFragment extends Fragment {
     }
 
     private void setuserlist() {
+        userlist.clear();
        DatabaseReference dr= datar.child("posts");
        dr.addChildEventListener(new ChildEventListener() {
+
            @Override
            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
@@ -120,8 +122,9 @@ public class DisscussFragment extends Fragment {
                String uid = (String) snapshot.child("uid").getValue();
                Long time = (Long) snapshot.child("time").getValue();
 
+               String key= snapshot.getKey();
 //               reading uid details
-               loaduiddetail(uid,post,time);
+               loaduiddetail(uid,post,time,key);
 
 
 
@@ -154,16 +157,17 @@ public class DisscussFragment extends Fragment {
 
     }
 
-    private void loaduiddetail(String uid,String post, Long time) {
-       userlist.clear();
+    private void loaduiddetail(String uid,String post, Long time,String key) {
+
        datar.child("profile").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String s = (String) snapshot.child("name").getValue();
-                Log.e("Discuss frag adding name",s);
+                Log.e("Discuss frag adding name",snapshot.getKey());
                 String imageuri= (String) snapshot.child("pic").getValue();
 
-                userlist.add(0,new Question(s,post,time,imageuri));
+
+                userlist.add(0,new Question(key,post,time,imageuri,s));
                 adapter.notifyDataSetChanged();
             }
 

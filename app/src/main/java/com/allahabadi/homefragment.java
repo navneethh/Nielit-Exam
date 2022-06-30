@@ -74,10 +74,11 @@ public class homefragment extends Fragment {
         ConstraintLayout button= rootview.findViewById(R.id.imageView);
         LinearLayout olevel= rootview.findViewById(R.id.topvi);
         LinearLayout alevel= rootview.findViewById(R.id.aview);
+        LinearLayout blevel= rootview.findViewById(R.id.bview_linear);
         TextView t= (TextView) rootview.findViewById(R.id.main_banner_text);
         FirebaseAuth mAuth= FirebaseAuth.getInstance();
-        String uid = mAuth.getCurrentUser().getUid();
-        if (uid==null){
+
+        if ( (mAuth.getCurrentUser())==null){
 
             t.setText("Click to Login");
            openSignin(button);
@@ -100,6 +101,14 @@ public class homefragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(),Alevel.class);
+                startActivity(i);
+            }
+        });
+
+        blevel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),Blevel.class);
                 startActivity(i);
             }
         });

@@ -43,8 +43,9 @@ public class addquestActivity extends AppCompatActivity {
 
                String question= quest.getText().toString();
                String user = currentUser.getUid();
-               if (question.length()<=15){
+               if (question.length()<=25){
                    Toast.makeText(getBaseContext(),"Question is too small",Toast.LENGTH_LONG).show();
+                   progressBar.setVisibility(View.INVISIBLE);
                }
                else{
                 FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
@@ -59,6 +60,7 @@ public class addquestActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 DatabaseReference db= firebaseDatabase.getReference("profilepost");
+                                firebaseDatabase.getReference("qanswer").child(key).push().setValue(q);
                                 db.child(user).push().setValue(key).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

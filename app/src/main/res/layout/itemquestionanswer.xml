@@ -3,62 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/questionbackc"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/questionbackc">
+
 
     <LinearLayout
+        android:id="@+id/mianlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/quest_back_round"
         android:orientation="vertical"
-        android:padding="5dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
-            android:id="@+id/question_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+            <Space
+                android:id="@+id/spaceinans"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"/>
 
-            <TextView
-                android:id="@+id/quest_txtview"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/linearanswer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:background="@drawable/answer_back_circle"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/question_linearA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/quest_txtviewa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_weight="4"
+                android:layout_weight="3"
+                android:maxHeight="150dp"
+                android:padding="5dp"
                 android:text="This is the sample question in how many days cna we finish the Alevel course fastest. if we have to complete in shortest time?"
                 android:textColor="@color/logindark"
-                android:maxHeight="150dp"
                 android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="bottom"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:text="Replied by " />
+                </LinearLayout>
+
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/imageView5a"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
 
-                    android:background="@drawable/circlebacksmall"
-                    android:clipToOutline="true"
                     android:layout_gravity="bottom|right"
                     android:layout_margin="5dp"
+                    android:background="@drawable/circlebacksmall"
+                    android:clipToOutline="true"
                     app:srcCompat="@drawable/ic_round_person_outline_24" />
 
                 <TextView
-                    android:id="@+id/name_txtview"
+                    android:id="@+id/name_txtviewa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
@@ -77,9 +107,11 @@
             android:background="@drawable/coursedetailback" />
 
         <LinearLayout
+            android:id="@+id/iconlay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:visibility="visible">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -89,13 +121,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/dateid"
+                    android:id="@+id/dateida"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="17"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -145,6 +177,8 @@
 
         </LinearLayout>
 
+
     </LinearLayout>
+    </LinearLayout></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

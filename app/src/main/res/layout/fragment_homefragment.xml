@@ -48,13 +48,30 @@ style="@style/headlineee"
             android:layout_height="250dp"
             android:layout_marginStart="24dp"
 
+            android:background="@drawable/circleback"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/bannerg"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
             app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipToOutline="true"
+                android:background="@drawable/circleback"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bannerg"
+                app:layout_constraintBottom_toBottomOf="@id/imageView"
+                app:layout_constraintEnd_toEndOf="@id/imageView"
+                app:layout_constraintStart_toStartOf="@id/imageView"
+                app:layout_constraintTop_toTopOf="@id/imageView" />
+
 
 
             <TextView
@@ -100,6 +117,8 @@ style="@style/headlineee"
                     android:textStyle="bold"
                     style="@style/headlineee"/>
             </LinearLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -271,7 +290,7 @@ style="@style/headlineee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="A-level computer course"
+                    android:text="A-level (BCA equivalent)"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -342,6 +361,117 @@ style="@style/headlineee"
                 android:text="Hard"
                 android:textColor="@color/white" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bview_linear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/aview" >
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/circleback"
+                android:clipToOutline="true"
+
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:scaleType="center"
+                android:src="@drawable/bannerhomeback" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="B-level (MCA equivalent)"
+                    style="@style/headlineee"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/coursedetailback"
+                        android:gravity="center"
+                        android:text="C++"
+                        android:textSize="15sp" />
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/coursedetailback"
+                        android:gravity="center"
+                        android:text="JS"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/coursedetailback"
+                        android:gravity="center"
+                        android:text="NodeJS"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/ic_baseline_access_time_24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1 year" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".85"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/difficulty"
+                android:padding="3dp"
+                android:text="Medium"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
 
 
 
