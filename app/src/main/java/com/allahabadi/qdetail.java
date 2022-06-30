@@ -83,18 +83,25 @@ public class qdetail extends AppCompatActivity {
         postreply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String answer= answerentry.getText().toString();
-                String uid= user.getUid().toString();
-                Long time = System.currentTimeMillis();
-                answerentry.setText("");
-                postreply.setEnabled(false);
-                quesdata.push().setValue(new Question(uid,answer,time)).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
 
-                    }
-                });
-            }
+                postreply.setEnabled(false);
+                if(userid==null ){
+                    Toast.makeText(getBaseContext(),"Need log in to reply",Toast.LENGTH_LONG).show();
+
+                }
+                else {
+                    String answer = answerentry.getText().toString();
+
+                    Long time = System.currentTimeMillis();
+
+                    quesdata.push().setValue(new Question(userid, answer, time)).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                        }
+                    });
+                }
+                answerentry.setText("");  }
         });
 
 
@@ -146,7 +153,7 @@ public class qdetail extends AppCompatActivity {
 
 
                 answerlist.add(new Question("key",post,time,imageuri,s));
-                Log.e(s,post);
+
                 adapter.notifyDataSetChanged();
             }
 

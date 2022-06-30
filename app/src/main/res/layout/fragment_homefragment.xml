@@ -115,7 +115,8 @@ style="@style/headlineee"
                     android:padding="10dp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    style="@style/headlineee"/>
+                    style="@style/headlineee"
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
 

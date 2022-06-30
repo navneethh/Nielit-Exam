@@ -191,6 +191,7 @@ They can appear for as many papers interested at any exam cycle ehich is held 2 
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/syllabus_button"
                     style="@style/courseprop"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

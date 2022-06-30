@@ -47,6 +47,14 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.MyViewHo
             holder.replytag.setText("Asked by");
             holder.replytag.setBackgroundResource(R.drawable.coursedetailback);
             holder.questionhere.setBackgroundResource(R.drawable.quest_back_round);
+        }else
+        {
+            holder.anwerLay.setVisibility(View.VISIBLE);
+
+            holder.replytag.setBackgroundResource(R.color.white);
+            holder.questionhere.setBackgroundResource(R.drawable.answer_back_circle);
+            holder.replytag.setText("replied by");
+
         }
 
 

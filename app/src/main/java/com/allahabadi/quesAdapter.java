@@ -15,6 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -62,6 +64,13 @@ public class quesAdapter extends RecyclerView.Adapter<quesAdapter.MyViewHolder>{
         holder.dateview.setText(gettime(time));
 
 
+        holder.favimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.favimage.setBackgroundResource(R.drawable.ic_fav_red);
+//                FirebaseDatabase.getInstance().getReference("likes").child(qid).push().setValue("key");
+            }
+        });
         holder.questlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,7 +129,8 @@ public class quesAdapter extends RecyclerView.Adapter<quesAdapter.MyViewHolder>{
         private TextView nameview;
         private TextView dateview;
         private LinearLayout questlay;
-        ImageView authorimage;
+        ImageView authorimage,favimage;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             questlay = itemView.findViewById(R.id.question_linear);
@@ -128,6 +138,7 @@ public class quesAdapter extends RecyclerView.Adapter<quesAdapter.MyViewHolder>{
             nameview = itemView.findViewById(R.id.name_txtview);
             authorimage = itemView.findViewById(R.id.imageView5);
             dateview = itemView.findViewById(R.id.dateid);
+            favimage= itemView.findViewById(R.id.favimage);
 
         }
     }
