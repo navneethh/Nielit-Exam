@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profilefragment">
+    tools:context=".editprofile">
 
-    <!-- TODO: Update blank fragment layout -->
     <ScrollView
-        android:background="@color/questionbackc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/questionbackc">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -32,7 +31,7 @@
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/emailprof">
+                    app:layout_constraintTop_toBottomOf="@+id/emailprofe">
 
 
                     <LinearLayout
@@ -60,7 +59,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/dobtxt"
+                            android:id="@+id/dobtxte"
                             style="@style/headlineee"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -85,7 +84,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/coursetxt"
+                            android:id="@+id/coursetxte"
                             style="@style/headlineee"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -109,7 +108,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/gendertxt"
+                            android:id="@+id/gendertxte"
                             style="@style/headlineee"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -133,7 +132,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/phonetxt"
+                            android:id="@+id/phonetxte"
                             style="@style/headlineee"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -146,21 +145,20 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayout12"
+                    android:id="@+id/linearLayout12e"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="24dp"
-                    android:padding="5dp"
+                    android:background="@drawable/quest_back_round"
                     android:orientation="vertical"
+                    android:padding="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:background="@drawable/quest_back_round"
                     app:layout_constraintTop_toBottomOf="@id/linearLayout9">
 
                     <LinearLayout
-                        android:id="@+id/editbut"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -182,17 +180,19 @@
                             android:layout_margin="5dp"
                             android:text="Edit profile" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
-                        android:background="@drawable/coursedetailback"/>
+                        android:background="@drawable/coursedetailback" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minHeight="48dp"
                         android:layout_marginStart="8dp"
+                        android:minHeight="48dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -216,8 +216,8 @@
                 </LinearLayout>
 
 
-                <TextView
-                    android:id="@+id/nameprof"
+                <EditText
+                    android:id="@+id/nameprofe"
                     style="@style/headlineee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -228,10 +228,10 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profileimageview" />
+                    app:layout_constraintTop_toBottomOf="@+id/profileimageviewe" />
 
                 <ImageView
-                    android:id="@+id/profileimageview"
+                    android:id="@+id/profileimageviewe"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
                     android:layout_marginTop="64dp"
@@ -243,14 +243,14 @@
                     app:srcCompat="@drawable/ic_round_person_outline_24" />
 
                 <Button
-                    android:id="@+id/uploadbutton"
+                    android:id="@+id/uploadbuttone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="48dp"
                     android:text="Upload"
                     android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="@+id/nameprof"
+                    app:layout_constraintBottom_toBottomOf="@+id/nameprofe"
                     app:layout_constraintEnd_toEndOf="parent" />
 
                 <LinearLayout
@@ -260,13 +260,12 @@
                     android:layout_marginEnd="-10dp"
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/coursedetailback"
-                    app:layout_constraintBottom_toBottomOf="@+id/profileimageview"
+                    app:layout_constraintBottom_toBottomOf="@+id/profileimageviewe"
 
-                    app:layout_constraintEnd_toEndOf="@+id/profileimageview"
-                    tools:visibility="gone">
+                    app:layout_constraintEnd_toEndOf="@+id/profileimageviewe">
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/imageV"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_margin="5dp"
@@ -274,7 +273,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/emailprof"
+                    android:id="@+id/emailprofe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -282,10 +281,10 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nameprof" />
+                    app:layout_constraintTop_toBottomOf="@+id/nameprofe" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBare"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -293,12 +292,11 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="7dp"
                     android:indeterminate="true"
-                    app:layout_constraintBottom_toTopOf="@+id/nameprof"
+                    app:layout_constraintBottom_toTopOf="@+id/nameprofe"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:visibility="gone" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

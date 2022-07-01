@@ -144,6 +144,7 @@ style="@style/headlineee"
         <LinearLayout
             android:id="@+id/topvi"
             android:layout_width="0dp"
+            android:minWidth="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
@@ -153,18 +154,22 @@ style="@style/headlineee"
 
             app:layout_constraintTop_toBottomOf="@+id/textView5" >
 
-            <ImageView
+         <LinearLayout
+             android:layout_width="0dp"
+             android:layout_height="100dp"
+             android:layout_weight="1"
+             android:paddingTop="10dp"
+             android:paddingBottom="10dp">
+             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/circleback"
                 android:clipToOutline="true"
-
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:scaleType="center"
-                android:src="@drawable/bannerhomeback" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/olevel_ic" />
+         </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/olevelbut"
@@ -266,18 +271,22 @@ style="@style/headlineee"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/topvi">
-
-            <ImageView
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+        <ImageView
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/circleback"
 
                 android:clipToOutline="true"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:scaleType="center"
-                android:src="@drawable/but_back" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/alevel_ic" />
+        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -374,20 +383,23 @@ style="@style/headlineee"
             app:layout_constraintStart_toStartOf="parent"
 
             app:layout_constraintTop_toBottomOf="@+id/aview" >
-
-            <ImageView
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+        <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/circleback"
                 android:clipToOutline="true"
 
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:scaleType="center"
-                android:src="@drawable/bannerhomeback" />
-
+                android:scaleType="centerCrop"
+                android:src="@drawable/blevel_ic" />
+        </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

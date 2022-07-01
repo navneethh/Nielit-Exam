@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Nielit"
         tools:targetApi="31">
         <activity
+            android:name=".editprofile"
+            android:exported="false" />
+        <activity
+            android:name=".loadurlActivity"
+            android:exported="false" />
+        <activity
             android:name=".Syllabus"
             android:exported="false" />
         <activity
