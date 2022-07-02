@@ -64,6 +64,8 @@ public class quesAdapter extends RecyclerView.Adapter<quesAdapter.MyViewHolder>{
         holder.dateview.setText(gettime(time));
 
 
+//        holder.likeview.setVisibility(View.INVISIBLE);
+        holder.replyview.setVisibility(View.INVISIBLE);
         holder.favimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,9 +129,10 @@ public class quesAdapter extends RecyclerView.Adapter<quesAdapter.MyViewHolder>{
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView questionview;
         private TextView nameview;
-        private TextView dateview;
+        private TextView dateview,likeview,replyview;
         private LinearLayout questlay;
         ImageView authorimage,favimage;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -139,6 +142,9 @@ public class quesAdapter extends RecyclerView.Adapter<quesAdapter.MyViewHolder>{
             authorimage = itemView.findViewById(R.id.imageView5);
             dateview = itemView.findViewById(R.id.dateid);
             favimage= itemView.findViewById(R.id.favimage);
+//            likeview= itemView.findViewById(R.
+//            id.replyview);
+            replyview = itemView.findViewById(R.id.replyview);
 
         }
     }

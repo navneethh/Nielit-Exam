@@ -3,6 +3,8 @@ package com.allahabadi;
 import static android.content.ContentValues.TAG;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -59,9 +61,9 @@ public class profilefragment extends Fragment {
     FirebaseAuth mAuth;
     String userid;
     DatabaseReference myref;
-    TextView name,email,dob,courses,phone;
+    TextView name,email,dob,courses,gender,phone;
     ImageView profileimage;
-    LinearLayout phonelayout,doblayot;
+    LinearLayout phonelayout;
     Button uploadbutton;
     Uri selectedImageUri;
     ProgressBar progressBar;
@@ -122,13 +124,13 @@ public class profilefragment extends Fragment {
          courses= rootview.findViewById(R.id.coursetxt);
          phone= rootview.findViewById(R.id.phonetxt);
          dob= rootview.findViewById(R.id.dobtxt);
+         gender = rootview.findViewById(R.id.gendertxt);
          phonelayout = rootview.findViewById(R.id.phonelayout);
-        doblayot = rootview.findViewById(R.id.doblayout);
+         LinearLayout edit= rootview.findViewById(R.id.editbut);
         profileimage= rootview.findViewById(R.id.profileimageview);
         uploadbutton= rootview.findViewById(R.id.uploadbutton);
         progressBar = rootview.findViewById(R.id.progressBar);
 
-        ImageView editi= rootview.findViewById(R.id.imageView4);
 //         mAuth= FirebaseAuth.getInstance();
 
 
@@ -136,6 +138,13 @@ public class profilefragment extends Fragment {
         progressBar.setVisibility(View.INVISIBLE);
 
         database= FirebaseDatabase.getInstance();
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),editprofile.class);
+                startActivity(i);
+            }
+        });
 
 
        if(userid!=null) {
@@ -145,21 +154,38 @@ public class profilefragment extends Fragment {
 
 
 
+       TextView logout= rootview.findViewById(R.id.Lohgin);
+       logout.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               new AlertDialog.Builder(getContext())
+                       .setTitle("Log out")
+                       .setMessage("Are you sure you want to Log out?")
+
+                       // Specifying a listener allows you to take an action before dismissing the dialog.
+                       // The dialog is automatically dismissed when a dialog button is clicked.
+                       .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                           public void onClick(DialogInterface dialog, int which) {
+                               // Continue with delete operationmAuth.signOut();
+                               mAuth.signOut();
+                               startActivity(new Intent(getContext(),MainActivity.class));
+
+
+                           }
+                       })
+
+                       // A null listener allows the button to dismiss the dialog and take no further action.
+                       .setNegativeButton(android.R.string.no, null)
+                       .setIcon(android.R.drawable.ic_dialog_alert)
+                       .show();
+
+
+
+           }
+       });
 //seting new image
-        editi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectimage();
-            }
-        });
-        uploadbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
-                uploadbutton.setVisibility(View.INVISIBLE);
-                uploadpic();
-            }
-        });
+
+
 
         // Inflate the layout for this fragment
         return rootview;
@@ -202,8 +228,7 @@ public class profilefragment extends Fragment {
         dr.setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                progressBar.setVisibility(View.GONE);
-                uploadbutton.setVisibility(View.GONE);
+
             }
         });
     }
@@ -231,10 +256,9 @@ public class profilefragment extends Fragment {
                     email.setText(dataSnapshot.child("email").getValue().toString());
                     courses.setText((String) dataSnapshot.child("course").getValue());
                     String pro = (String) dataSnapshot.child("pic").getValue();
-
-
                     phone.setText((String) dataSnapshot.child("phone").getValue());
                     dob.setText((String) dataSnapshot.child("dob").getValue());
+                    gender.setText((String)dataSnapshot.child("gender").getValue());
 
                     if (pro != null)
                         loadprofilepic(pro);

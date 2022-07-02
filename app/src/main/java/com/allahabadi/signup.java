@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ public class signup extends AppCompatActivity {
     String email,password,name,cour;
     TextView emaill,pass,namet;
     FirebaseDatabase database; DatabaseReference myRef;
-    String usid;
+    String usid; ProgressBar p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class signup extends AppCompatActivity {
 
          emaill= findViewById(R.id.emailt);
          pass= findViewById(R.id.passt);
+       p= findViewById(R.id.progressBar4);
 
         TextView loginbutton= findViewById(R.id.logintxt);
          namet= findViewById(R.id.namet);
@@ -54,6 +56,7 @@ public class signup extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent (getBaseContext(),login.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -88,9 +91,19 @@ public class signup extends AppCompatActivity {
         sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               signuo();
-
+                email=emaill.getText().toString();
+                password = pass.getText().toString();
+                name=namet.getText().toString();
+                if(email.length()<3){
+                    Toast.makeText(signup.this, "Enter proper email", Toast.LENGTH_SHORT).show();
+                }else if (name.length()<4)
+                    Toast.makeText(signup.this, "Name lenght is too small", Toast.LENGTH_SHORT).show();
+                else if (password.length()<4)
+                    Toast.makeText(signup.this, "Enter proper Password", Toast.LENGTH_SHORT).show();
+                else {
+                    signuo();
+                    p.setVisibility(View.VISIBLE);
+                }
             }});
     }
 
@@ -128,6 +141,10 @@ public class signup extends AppCompatActivity {
                          myRef.child(mAuth.getUid().toString()).setValue(userr).addOnCompleteListener(new OnCompleteListener<Void>() {
                              @Override
                              public void onComplete(@NonNull Task<Void> task) {
+                                 Intent o= new Intent(getBaseContext(),editprofile.class);
+                                 o.putExtra("signup","t");
+                                 startActivity(o);
+                                 p.setVisibility(View.INVISIBLE);
                                  finish();
                              }
                          });

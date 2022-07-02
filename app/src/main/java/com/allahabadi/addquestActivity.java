@@ -38,7 +38,6 @@ public class addquestActivity extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                post.setVisibility(View.INVISIBLE);
                 progressBar.setVisibility(View.VISIBLE);
 
                String question= quest.getText().toString();
@@ -48,6 +47,7 @@ public class addquestActivity extends AppCompatActivity {
                    progressBar.setVisibility(View.INVISIBLE);
                }
                else{
+                   post.setVisibility(View.INVISIBLE);
                 FirebaseDatabase firebaseDatabase= FirebaseDatabase.getInstance();
                 DatabaseReference databaseReference = firebaseDatabase.getReference("posts");
                 Question q = new Question(user, question,System.currentTimeMillis());
